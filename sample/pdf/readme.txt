@@ -1,0 +1,1 @@
+The following PDF file has been provided as a sample for testing purposes. It has been curated to evaluate the functionality, accuracy, and performance of the system. This sample file includes a range of relevant features, such as text, images, formatting, and other attributes that are commonly found in PDF files. Please use this sample file for testing and validation purposes.
