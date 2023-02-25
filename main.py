@@ -18,8 +18,11 @@ if __name__ == '__main__':
     feature_model_path = "yolov5_models/feature.pt" # feature extractor yolo model path
     extractor = FeatureExtractor(files_path, img_path, result_path, block_model_path, feature_model_path)
     files_list = os.listdir(files_path) # list of pdf files
-    filenames = [(sleep_value, file) for sleep_value, file in zip(range(0, len(files_list)*3, 3), files_list) 
-                 if os.path.splitext(file)[-1].lower() == '.pdf']
+    filenames = [(file_idx + 3, file) 
+                 if os.path.splitext(file)[-1].lower() == '.pdf' and file_idx > 0 
+                 else (file_idx, file) for file_idx, file in enumerate(files_list)]
+#     filenames = [(sleep_value, file) for sleep_value, file in zip(range(0, len(files_list)*3, 3), files_list) 
+#                  if os.path.splitext(file)[-1].lower() == '.pdf']
     # starting multiprocessing 
     pool_process = Pool(12) # the available cores in my system is 12
     pool_process.map(extractor.data_extractor, filenames)
